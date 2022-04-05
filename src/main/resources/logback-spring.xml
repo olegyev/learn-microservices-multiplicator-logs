@@ -2,8 +2,14 @@
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
+            <!--
+             X-B3-TraceId and X-B3-SpanId are OpenZipkin's B3 Propagation specification headers (https://github.com/openzipkin/b3-propagation).
+             They are included in the MDC (SLF4J’s Mapped Diagnostic Context object,
+             a logging context whose lifecycle is limited to the current thread)
+             by the Sleuth's trace interceptors using Brave.
+             -->
             <pattern>
-                [%-15marker] %highlight(%-5level) %msg%n
+                [%-15marker] [%X{X-B3-TraceId:-},%X{X-B3-SpanId:-}] %highlight(%-5level) %msg%n
             </pattern>
         </layout>
     </appender>
