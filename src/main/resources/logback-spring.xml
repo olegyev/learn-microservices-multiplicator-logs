@@ -3,6 +3,7 @@
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <!--
+             See learn.microservices.logs.consumer.LogsEventHandler#log() for details on how log entries are processed after being received from the RabbitMQ's queue.
              X-B3-TraceId and X-B3-SpanId are OpenZipkin's B3 Propagation specification headers (https://github.com/openzipkin/b3-propagation).
              They are included in the MDC (SLF4J’s Mapped Diagnostic Context object,
              a logging context whose lifecycle is limited to the current thread)
